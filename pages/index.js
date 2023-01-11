@@ -34,11 +34,13 @@ export default function Home() {
         <title>Weather App</title>
       </Head>
       <div className=' absolute top-0 left-0 right-0 bottom-0 bg-black/40 z-[1]'/>
+      <div className='h-[100vh]'>
           <Image 
           fill
           className='object-cover'
           src='https://images.unsplash.com/photo-1527482797697-8795b05a13fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80' 
           />
+      </div>
           {/* search */}
           <div className='relative top-0 left-0 flex justify-between items-center max-w-[500px] m-auto w-full text-white z-50 p-4'>
             <form 
@@ -48,7 +50,7 @@ export default function Home() {
                 <input 
                 type="text" 
                 placeholder='Search City' 
-                className=' bg-transparent border-none text-white focus:outline-none text-xl'
+                className=' bg-transparent border-none text-white focus:outline-none text-xl max-w-[400px] w-full'
                 onChange={(e) => setCity(e.target.value)}
                 />
               </div>
