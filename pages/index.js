@@ -1,7 +1,25 @@
 import Head from 'next/head'
-
+import axios from 'axios'
+import { useState } from 'react'
+import {BsSearch} from 'react-icons/bs'
 
 export default function Home() {
+  const [city, setCity] = useState('');
+  const [weather, setWeather] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=dubai&units=metric&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`
+
+  const fetchWeather = (e) => {
+   e.preventDefault()
+   setLoading(true)
+   axios.get(url).then((response) => {
+    setWeather(response.data)
+    console.log(response.data)
+   })
+   setCity('')
+   setLoading(false)
+  }
   return (
     <>
       <Head>
@@ -10,7 +28,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>elio</h1>
+      <button onClick={fetchWeather}>fetch weather</button>
     </>
   )
 }
